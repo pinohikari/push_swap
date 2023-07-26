@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "push_swap.h"
 
-typedef struct s_stack
+void	ft_swap(int *a, int *b)
 {
-	int				data;
-	int				rank;
-	struct s_stack	*next;
-}					t_stack;
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
 // 線形リストから配列に要素をコピーする関数
 void	copy_list_to_array(t_stack *list, int *array, int n)
@@ -58,8 +59,7 @@ void	sort_ascending_order(int *array, int n)
 void	coordinate_compression(t_stack *list, int n)
 {
 	int	*array;
-	int	compressedvalue;
-	int	rank;
+	int	arr_rank;
 	int	i;
 
 	array = (int *)malloc(n * sizeof(int));
@@ -67,22 +67,92 @@ void	coordinate_compression(t_stack *list, int n)
 		error_exit("malloc");
 	copy_list_to_array(list, array, n);
 	sort_ascending_order(array, n);
-	compressedvalue = array[0];
-	rank = 0;
+	arr_rank = 0;
 	i = 0;
 	while (i < n)
 	{
-		if (array[i] != compressedvalue)
-		{
-			compressedvalue = array[i];
-			rank++;
-		}
-		list->rank = rank;
+		list->rank = arr_rank;
 		list = list->next;
 		i++;
+		arr_rank++;
 	}
 	free(array);
 }
+
+
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// typedef struct s_stack
+// {
+// 	int				data;
+// 	int				rank;
+// 	struct s_stack	*next;
+// }					t_stack;
+
+// // 線形リストから配列に要素をコピーする関数
+// void	copy_list_to_array(t_stack *list, int *array, int n)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		array[i] = list->data;
+// 		list = list->next;
+// 		i++;
+// 	}
+// }
+
+// void	sort_ascending_order(int *array, int n)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		j = 0;
+// 		while (j < n - i - 1)
+// 		{
+// 			if (array[j] > array[j + 1])
+// 				ft_swap(&array[j], &array[j + 1]);
+// 			if (array[j] == array[j + 1])
+// 				error_exit("equivalent value");
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// void	coordinate_compression(t_stack *list, int n)
+// {
+// 	int	*array;
+// 	int	compressedvalue;
+// 	int	rank;
+// 	int	i;
+
+// 	array = (int *)malloc(n * sizeof(int));
+// 	if (!array)
+// 		error_exit("malloc");
+// 	copy_list_to_array(list, array, n);
+// 	sort_ascending_order(array, n);
+// 	compressedvalue = array[0];
+// 	rank = 0;
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		if (array[i] != compressedvalue)
+// 		{
+// 			compressedvalue = array[i];
+// 			rank++;
+// 		}
+// 		list->rank = rank;
+// 		list = list->next;
+// 		i++;
+// 	}
+// 	free(array);
+// }
 
 // 座標圧縮を行う関数
 // void	coordinate_compression(t_stack *list, int n)

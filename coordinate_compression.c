@@ -6,36 +6,77 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 17:51:17 by hhino             #+#    #+#             */
-/*   Updated: 2023/07/24 19:59:03 by hhino            ###   ########.fr       */
+/*   Updated: 2023/07/26 20:12:52 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(int *a, int *b)
+typedef struct s_stack
 {
-	int	temp;
+	int				data;
+	int				rank;
+	struct s_stack	*next;
+}					t_stack;
 
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-// 線形リストから配列に要素をコピーする関数
-void	copy_list_to_array(t_stack *list, int *array, int n)
+void	coordinate_compression(t_stack *list, int n)
 {
-	int	i;
+	t_stack	**array;
+	t_stack	*current;
+	t_stack	*temp;
+	int		compressed_value;
+	int		rank;
+	int		i;
+	int		j;
 
+	array = (t_stack **)malloc((n + 1) * sizeof(t_stack *));
+	if (!array)
+		error_exit("malloc");
+	current = list;
+	i = 0;
+	while (i < n) //iじゃなくてlistになるまで
+	{
+		array[i] = current;
+//prinf("%d", current->data);
+		current = current->next;
+		i++;
+	}
+	i = 0;
+	j = 0;
+	while (i < n - 1)
+	{
+		while (j < n - i - 1)
+		{
+			if (array[j]->data > array[j + 1]->data)
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+	compressed_value = array[0]->data;
+	rank = 0;
 	i = 0;
 	while (i < n)
 	{
-		array[i] = list->data;
-		list = list->next;
+		if (array[i]->data != compressed_value)
+		{
+			compressed_value = array[i]->data;
+			rank++;
+		}
+		array[i]->rank = rank;
 		i++;
+		rank++;
 	}
+	free(array);
 }
 
-void	sort_ascending_order(int *array, int n)
+//////////////////////////////////////////////////////////////////////////////////
+
+void	sort_ascending_order(t_stack **list, int n)
 {
 	int	i;
 	int	j;
@@ -46,9 +87,9 @@ void	sort_ascending_order(int *array, int n)
 		j = 0;
 		while (j < n - i - 1)
 		{
-			if (array[j] > array[j + 1])
-				ft_swap(&array[j], &array[j + 1]);
-			if (array[j] == array[j + 1])
+			if (list->data > list->next->data)
+				ft_swap(&list, &list);
+			if (list->data == list->next->data)
 				error_exit("equivalent value");
 			j++;
 		}
@@ -56,28 +97,23 @@ void	sort_ascending_order(int *array, int n)
 	}
 }
 
-void	coordinate_compression(t_stack *list, int n)
+void	coordinate_compression(t_stack **list, int n)
 {
-	int	*array;
-	int	compressedvalue;
+	int	**arr;
 	int	arr_rank;
 	int	i;
 
-	array = (int *)malloc(n * sizeof(int));
-	if (!array)
+	arr = malloc(sizeof(t_stack) * (n + 1));
+	if (!arr)
 		error_exit("malloc");
-	copy_list_to_array(list, array, n);
-	sort_ascending_order(array, n);
-	compressedvalue = array[0];
+	sort_ascending_order(list, n);
 	arr_rank = 0;
-	i = 0;
-	while (i < n)
+	while (arr_rank < n - 1)
 	{
 		list->rank = arr_rank;
-		list = list->next;
-		i++;
+		arr_rank++;
 	}
-	free(array);
+	free(arr);
 }
 
 // int	*coordinate_compression(int arr[], int n)
