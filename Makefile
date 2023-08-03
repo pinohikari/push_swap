@@ -1,21 +1,39 @@
-SRCS := 
+NAME = push_swap
 
+
+SRCS := main.c\
+		create_node.c\
+		treat_digit.c\
+		error.c\
+		coordinate_compression.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-NAME = push_swap.a
+
+LIBS = -L libft -lft
+LIBFT = libft/libft.a
 
 all: 	$(NAME)
 
-$(NAME):	$(OBJS)
-		ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(LIBFT)
+	@ $(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(LIBS)
+	@echo "conpiled!"
+
+$(LIBFT):
+	$(MAKE) -C libft/
 
 clean:
-		rm -f $(OBJS)
+		@ $(RM) $(OBJS)
+		$(MAKE) -C libft clean
+		@echo "cleaned!"
 
 fclean:	clean
-		rm -f $(NAME)
+		@ $(RM) $(NAME)
+		$(MAKE) -C libft fclean
+		@echo "all cleaned!"
 
 re: fclean all
+
+.PHONY :  all clean fclean re

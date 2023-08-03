@@ -6,115 +6,133 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 17:51:17 by hhino             #+#    #+#             */
-/*   Updated: 2023/07/26 20:12:52 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/03 19:02:32 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-typedef struct s_stack
-{
-	int				data;
-	int				rank;
-	struct s_stack	*next;
-}					t_stack;
-
-void	coordinate_compression(t_stack *list, int n)
-{
-	t_stack	**array;
-	t_stack	*current;
-	t_stack	*temp;
-	int		compressed_value;
-	int		rank;
-	int		i;
-	int		j;
-
-	array = (t_stack **)malloc((n + 1) * sizeof(t_stack *));
-	if (!array)
-		error_exit("malloc");
-	current = list;
-	i = 0;
-	while (i < n) //iじゃなくてlistになるまで
-	{
-		array[i] = current;
-//prinf("%d", current->data);
-		current = current->next;
-		i++;
-	}
-	i = 0;
-	j = 0;
-	while (i < n - 1)
-	{
-		while (j < n - i - 1)
-		{
-			if (array[j]->data > array[j + 1]->data)
-			{
-				temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
-			}
-			j++;
-		}
-		i++;
-	}
-	compressed_value = array[0]->data;
-	rank = 0;
-	i = 0;
-	while (i < n)
-	{
-		if (array[i]->data != compressed_value)
-		{
-			compressed_value = array[i]->data;
-			rank++;
-		}
-		array[i]->rank = rank;
-		i++;
-		rank++;
-	}
-	free(array);
-}
-
-//////////////////////////////////////////////////////////////////////////////////
-
-void	sort_ascending_order(t_stack **list, int n)
+int	coordinate_compression(int *arr, int size)
 {
 	int	i;
 	int	j;
+	int	rank;
 
+	rank = 0;
 	i = 0;
-	while (i < n)
+	while (i < size)
 	{
 		j = 0;
-		while (j < n - i - 1)
+		while (j < size)
 		{
-			if (list->data > list->next->data)
-				ft_swap(&list, &list);
-			if (list->data == list->next->data)
+			if (arr[i] > arr[j])
+				rank++;
+			if (arr[i] == arr[j])
 				error_exit("equivalent value");
 			j++;
 		}
 		i++;
 	}
+	return (rank);
 }
 
-void	coordinate_compression(t_stack **list, int n)
-{
-	int	**arr;
-	int	arr_rank;
-	int	i;
+// void	coordinate_compression(t_info *info)
+// {
+// 	t_stack	**array;
+// 	t_stack	*current;
+// 	t_stack	*temp;
+// 	int		compressed_value;
+// 	int		rank;
+// 	int		i;
+// 	int		j;
 
-	arr = malloc(sizeof(t_stack) * (n + 1));
-	if (!arr)
-		error_exit("malloc");
-	sort_ascending_order(list, n);
-	arr_rank = 0;
-	while (arr_rank < n - 1)
-	{
-		list->rank = arr_rank;
-		arr_rank++;
-	}
-	free(arr);
-}
+// 	array = (t_stack **)malloc((n + 1) * sizeof(t_stack *));
+// 	if (!array)
+// 		error_exit("malloc");
+// 	current = list;
+// 	i = 0;
+// 	while (i < n) // iじゃなくてlistになるまで
+// 	{
+// 		array[i] = current;
+// 		// prinf("%d", current->data);
+// 		current = current->next;
+// 		i++;
+// 	}
+// 	i = 0;
+// 	j = 0;
+// 	while (i < n - 1)
+// 	{
+// 		while (j < n - i - 1)
+// 		{
+// 			if (array[j]->data > array[j + 1]->data)
+// 			{
+// 				temp = array[j];
+// 				array[j] = array[j + 1];
+// 				array[j + 1] = temp;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	compressed_value = array[0]->data;
+// 	rank = 0;
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		if (array[i]->data != compressed_value)
+// 		{
+// 			compressed_value = array[i]->data;
+// 			rank++;
+// 		}
+// 		array[i]->rank = rank;
+// 		i++;
+// 		rank++;
+// 	}
+// 	free(array);
+// }
+
+//
+	//////////////////////////////////////////////////////////////////////////////////
+
+// void	sort_ascending_order(t_stack **list, int n)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		j = 0;
+// 		while (j < n - i - 1)
+// 		{
+// 			if (list->data > list->next->data)
+// 				ft_swap(&list, &list);
+// 			if (list->data == list->next->data)
+// 				error_exit("equivalent value");
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// void	coordinate_compression(t_stack **list, int n)
+// {
+// 	int	**arr;
+// 	int	arr_rank;
+// 	int	i;
+
+// 	arr = malloc(sizeof(t_stack) * (n + 1));
+// 	if (!arr)
+// 		error_exit("malloc");
+// 	sort_ascending_order(list, n);
+// 	arr_rank = 0;
+// 	while (arr_rank < n - 1)
+// 	{
+// 		list->rank = arr_rank;
+// 		arr_rank++;
+// 	}
+// 	free(arr);
+// }
 
 // int	*coordinate_compression(int arr[], int n)
 // {

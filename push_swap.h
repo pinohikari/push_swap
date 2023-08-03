@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:40:23 by hhino             #+#    #+#             */
-/*   Updated: 2023/07/24 19:52:00 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/03 18:45:16 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,19 @@ void						ft_rotate(int *stack_a, int size_a);
 int							*sort_two(int *stack_a);
 int							*sort_three(int *stack_a);
 
+//create_node
+t_stack						*create_node(int data);
+void						push_back(t_stack **head, int data);
+void						free_list(t_stack *head);
+
 //error
 void						error_exit(char *str);
+
+//treat_digit
+void						str_isdigit(char *str, int argc);
+int							*get_num(char *str);
+int							ft_atoi(char *str);
+
+int	coordinate_compression(int *arr, int data, int size);
 
 #endif

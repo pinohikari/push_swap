@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 19:53:07 by hhino             #+#    #+#             */
-/*   Updated: 2023/05/30 17:50:04 by hhino            ###   ########.fr       */
+/*   Updated: 2023/07/30 16:43:36 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int					ft_atoi(const char *str);
+//int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
 int					ft_isalnum(int c);

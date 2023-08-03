@@ -1,67 +1,103 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   treat_digit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:46:39 by hhino             #+#    #+#             */
-/*   Updated: 2023/07/29 20:03:59 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/03 17:54:46 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
+void		str_isdigit(char *str, int argc);
+int			*get_num(char *str);
+static int	atoi_helper(char *str, int i, int flag);
+int			ft_atoi(char *str);
 
-int	str_isdigit(char *str)
+void	str_isdigit(char *str, int argc)
 {
 	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '-' || str[i] == '+' || str[i] == ' ')
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (str[i] == ' ' && argc == 2)
 			i++;
 		else if (ft_isdigit(str[i]))
 			i++;
 		else
-		{
-			error_exit("Invalid argument");
-			return (0);
-		}
+			error_exit("str_isdigit");
 	}
-	return (1);
 }
 
-int	**get_num(char *str)
+int	*get_num(char *str)
 {
 	int		i;
 	size_t	len;
 	char	**arr;
-	int		**intarr;
+	int		*intarr;
 
-	i = 0;
 	len = ft_strlen(str);
-	arr = malloc(sizeof(char) * (len + 1));
 	intarr = malloc(sizeof(int) * (len + 1));
-	while (str[i] != '\0')
-	{
-		arr = ft_split(str, ' ');
-		i++;
-	}
+	if (intarr == NULL)
+		error_exit("malloc");
+	arr = ft_split(str, ' ');
 	i = 0;
-	while (arr != NULL)
+	while (arr[i] != NULL)
 	{
-		intarr[i] = ft_atoi(str[i]); //atoi書き換え；正負符号1以上を弾き、intmax以上intmin以下を弾く
+		intarr[i] = ft_atoi(arr[i]);
 		i++;
 	}
+	intarr[i] = '\0';
+	free(arr);
 	return (intarr);
 }
 
-int	str_isinteger(char *str)
+int	ft_atoi(char *str)
 {
+	int	ans;
+	int	i;
+	int	flag;
+
+	i = 0;
+	flag = 1;
+	ans = 0;
+	if (str[0] == '-' || str[0] == '+')
+	{
+		if (str[0] == '-')
+			flag = -1;
+		i = 1;
+	}
+	if (!ft_isdigit(str[i]))
+		error_exit("atoi");
+	ans = atoi_helper(str, i, flag);
+	return (flag * ans);
+}
+
+static int	atoi_helper(char *str, int i, int flag)
+{
+	int	ans;
+
+	ans = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		if (ans != 0 && ans == INT_MAX / 10)
+		{
+			if ((flag == -1 && str[i] > '8') || (flag == 1 && str[i] > '7'))
+				error_exit("atoi");
+		}
+		if (ans != 0 && ans > INT_MAX / 10)
+		{
+			if (str[i] != '\0')
+				error_exit("atoi");
+		}
+		ans = ans * 10 + (str[i] - '0');
+		i++;
+	}
+	return (ans);
 }
