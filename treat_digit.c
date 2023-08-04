@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:46:39 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/03 17:54:46 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/04 17:26:32 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	*get_num(char *str)
 		i++;
 	}
 	intarr[i] = '\0';
-	free(arr);
+	ft_free_tab(arr);
 	return (intarr);
 }
 

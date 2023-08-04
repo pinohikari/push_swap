@@ -6,17 +6,18 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:19:20 by hhino             #+#    #+#             */
-/*   Updated: 2023/07/23 12:58:50 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/04 18:44:08 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	*sort_two(int *stack_a)
+void	*sort_two(t_stack top)
 {
-	if (stack_a[0] > stack_a[1])
-		sa(stack_a, 2);
-	return (stack_a);
+	if (top.data > top.next->data)
+		sa(top);
+	else
+		error_exit("sorted");
 }
 
 int	*sort_three(int *stack_a)

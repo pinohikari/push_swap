@@ -6,35 +6,46 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 17:51:17 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/03 19:02:32 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/04 16:51:02 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	coordinate_compression(int *arr, int size)
-{
-	int	i;
-	int	j;
-	int	rank;
 
-	rank = 0;
-	i = 0;
-	while (i < size)
+int	search_rank(int *intarr, int size, int i)
+{
+	int	rank;
+	int	target_value;
+	int	j;
+
+	rank = 1;
+	target_value = intarr[i];
+	j = 0;
+	while (j < size)
 	{
-		j = 0;
-		while (j < size)
-		{
-			if (arr[i] > arr[j])
-				rank++;
-			if (arr[i] == arr[j])
-				error_exit("equivalent value");
-			j++;
-		}
-		i++;
+		if (intarr[j] < target_value)
+			rank++;
+		if (j != i && intarr[j] == target_value)
+			error_exit("equivalent value");
+		j++;
 	}
 	return (rank);
 }
+
+// int main()
+// {
+// 	int intarr[] = {5, 3, 9, 7, 2, 2};
+// 	int size = sizeof(intarr) / sizeof(intarr[0]);
+
+// 	for (int i = 0; i < size; i++)
+// 	{
+// 		int rank = search_rank(intarr, size, i);
+// 		printf("intarr[%d] = %d, rank = %d\n", i, intarr[i], rank);
+// 	}
+// 	return 0;
+// }
+
 
 // void	coordinate_compression(t_info *info)
 // {

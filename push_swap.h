@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:40:23 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/03 18:45:16 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/04 17:44:26 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void						str_isdigit(char *str, int argc);
 int							*get_num(char *str);
 int							ft_atoi(char *str);
 
-int	coordinate_compression(int *arr, int data, int size);
+int							search_rank(int *arr, int size, int i);
 
 #endif
