@@ -5,7 +5,10 @@ SRCS := main.c\
 		create_node.c\
 		treat_digit.c\
 		error.c\
-		coordinate_compression.c
+		rank.c\
+		swap.c\
+		sort_under_six.c\
+		sort_under_three.c
 
 OBJS = $(SRCS:.c=.o)
 

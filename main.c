@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:14:13 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/04 18:25:08 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/04 19:27:28 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int	main(int argc, char **argv)
 		free (intarr);
 		if (info.size <= 6)
 			sort_under_six(info, top, info.size);
-		if (info.size > 6 && info.size <= 200)
-			sort_under200(info, top, info.size);
-		if (info.size > 200)
-			sort_over200(info, top, info.size);
+		// if (info.size > 6 && info.size <= 200)
+		// 	sort_under200(info, top, info.size);
+		// if (info.size > 200)
+		// 	sort_over200(info, top, info.size);
 	}
 	if (argc == 1)
 		return (0);

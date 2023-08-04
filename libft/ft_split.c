@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 13:29:19 by hhino             #+#    #+#             */
-/*   Updated: 2023/06/01 16:28:12 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/04 19:14:27 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,6 @@ static char	*cpy(char *dest, char const *src, unsigned int n, int j)
 	}
 	*dest = '\0';
 	return (p);
-}
-
-static char	**ft_free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-	tab = NULL;
-	return (NULL);
 }
 
 char	**ft_split(char const *str, char c)

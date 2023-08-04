@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:40:23 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/04 17:44:26 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/04 19:22:10 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ typedef struct s_stack
 	int				data;
 	int				rank;
 	struct s_stack	*next;
+	// struct s_stack	*prev;
 }					t_stack;
 
 void						ft_swap(int *a, int *b);
 void						ft_reverse_rotate(int *stack_a, int size_a);
 void						ft_rotate(int *stack_a, int size_a);
 
-int							*sort_two(int *stack_a);
 int							*sort_three(int *stack_a);
 
 //create_node
@@ -57,5 +57,9 @@ int							*get_num(char *str);
 int							ft_atoi(char *str);
 
 int							search_rank(int *arr, int size, int i);
+
+void	sa(t_stack **top, int size);
+void	sort_under_six(t_info info, t_stack *top, int size);
+void	sort_two(t_stack *top, int size);
 
 #endif
