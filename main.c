@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:14:13 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/04 19:27:28 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/05 15:22:09 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,24 @@ int	main(int argc, char **argv)
 		while (info.a != NULL)
 		{
 			info.a->rank = search_rank(intarr, info.size, i);
-			// printf("data:%d\trank:%d\ti:%d\n", info.a->data, info.a->rank, i);
 			info.a = info.a->next;
 			i++;
 		}
 		free (intarr);
+		info.a = top;
 		if (info.size <= 6)
-			sort_under_six(info, top, info.size);
+			sort_under_six(&info, info.size);
 		// if (info.size > 6 && info.size <= 200)
 		// 	sort_under200(info, top, info.size);
 		// if (info.size > 200)
 		// 	sort_over200(info, top, info.size);
+		i = 0;
+		while (i < info.size)
+		{
+			printf ("data:%d\trank:%d\ti:%d\n", info.a->data, info.a->rank, i);
+			info.a = info.a->next;
+			i++;
+		}
 	}
 	if (argc == 1)
 		return (0);

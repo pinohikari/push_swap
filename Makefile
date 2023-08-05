@@ -8,12 +8,14 @@ SRCS := main.c\
 		rank.c\
 		swap.c\
 		sort_under_six.c\
-		sort_under_three.c
+		sort_under_three.c\
+		rotate.c\
+		rev_rotate.c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBS = -L libft -lft
 LIBFT = libft/libft.a

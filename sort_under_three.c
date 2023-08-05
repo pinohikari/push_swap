@@ -6,41 +6,48 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:19:20 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/04 19:24:04 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/05 15:57:57 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two(t_stack *top, int size)
+void	sort_two(t_stack **top, int size)
 {
-	if (top->data > top->next->data)
-		sa(&top, size);
+	if ((*top)->data > (*top)->next->data)
+		sa(top, size);
 	else
 		error_exit("sorted");
 }
 
-// void	sort_three(int *stack_a)
-// {
-// 	if (stack_a[0] < stack_a[2] && stack_a[2] < stack_a[1]) /*1, 3, 2*/
-// 	{
-// 		rra(stack_a, 3);
-// 		sa(stack_a, 3);
-// 	}
-// 	if (stack_a[1] < stack_a[0] && stack_a[0] < stack_a[2]) /*2, 1, 3*/
-// 		sa(stack_a, 3);
-// 	if (stack_a[2] < stack_a[0] && stack_a[0] < stack_a[1]) /*2, 3, 1 */
-// 		rra(stack_a, 3);
-// 	if (stack_a[1] < stack_a[2] && stack_a[2] < stack_a[0]) /*3, 1, 2*/
-// 		ra(stack_a, 3);
-// 	if (stack_a[2] < stack_a[1] && stack_a[1] < stack_a[0]) /*3, 2, 1*/
-// 	{
-// 		ra(stack_a, 3);
-// 		sa(stack_a, 3);
-// 	}
-// 	else
-// 		error_exit("sorted");
-// }
+void	sort_three(t_stack **top, int size)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	first = (*top)->data;
+	second = (*top)->next->data;
+	third = (*top)->next->next->data;
+	if (first <third &&third < second) /*1, 3, 2*/
+	{
+		rra(top, size);
+		sa(top, size);
+	}
+	if (second < first && first <third) /*2, 1, 3*/
+		sa(top, size);
+	if (third < first && first < second) /*2, 3, 1 */
+		rra(top, size);
+	if (second <third &&third < first) /*3, 1, 2*/
+		ra(top, size);
+	if (third < second && second < first) /*3, 2, 1*/
+	{
+		ra(top, size);
+		sa(top, size);
+	}
+	else
+		error_exit("sorted");
+}
 
 
 
