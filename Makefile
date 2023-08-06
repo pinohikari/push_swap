@@ -10,7 +10,8 @@ SRCS := main.c\
 		sort_under_six.c\
 		sort_under_three.c\
 		rotate.c\
-		rev_rotate.c
+		rev_rotate.c\
+		push.c
 
 OBJS = $(SRCS:.c=.o)
 

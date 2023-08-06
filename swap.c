@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:25:07 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/05 15:21:46 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/06 13:16:55 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,30 @@ void	sa(t_stack **head, int size)
 	ft_putstr_fd("sa\n", 1);
 }
 
+void	sb(t_stack **head, int size)
+{
+	t_stack	*top;
+	t_stack	*next_node;
+	t_stack	*temp;
+
+	if (size < 2 || *head == NULL || (*head)->next == NULL)
+		error_exit("sb");
+	top = *head;
+	next_node = (*head)->next;
+
+	temp = next_node->next;
+	next_node->next = top;
+	top->next = temp;
+	*head = next_node;
+	ft_putstr_fd("sb\n", 1);
+}
+
+void	ss(t_stack **a, t_stack **b, int size_a, int size_b)
+{
+	sa(a, size_a);
+	sb(b, size_b);
+	ft_putstr_fd("ss\n", 1);
+}
 
 // void	sa(t_stack **head, int size)
 // {
@@ -83,27 +107,20 @@ void	sa(t_stack **head, int size)
 // 	ft_putstr_fd("sa\n", 1);
 // }
 
-void	sb(t_stack **head, int size)
-{
-	t_stack	*top;
-	t_stack	*next_node;
+// void	sb(t_stack **head, int size)
+// {
+// 	t_stack	*top;
+// 	t_stack	*next_node;
 
-	if (size < 2 || *head == NULL || (*head)->next == NULL)
-		error_exit("sb");
-	top = *head;
-	next_node = top->next;
-	top->next = next_node->next;
-	next_node->next = top;
-	*head = next_node;
-	ft_putstr_fd("sb\n", 1);
-}
-
-void	ss(t_stack **a_head, t_stack **b_head, int a_size, int b_size)
-{
-	sa(a_head, a_size);
-	sb(b_head, b_size);
-	ft_putstr_fd("ss\n", 1);
-}
+// 	if (size < 2 || *head == NULL || (*head)->next == NULL)
+// 		error_exit("sb");
+// 	top = *head;
+// 	next_node = top->next;
+// 	top->next = next_node->next;
+// 	next_node->next = top;
+// 	*head = next_node;
+// 	ft_putstr_fd("sb\n", 1);
+// }
 
 //配列ver.
 // void	sa(int *stack_a, int size)

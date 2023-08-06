@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coordinate_compression.c                           :+:      :+:    :+:   */
+/*   rank.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 17:51:17 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/04 16:51:02 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/06 17:25:11 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,28 @@ int	search_rank(int *intarr, int size, int i)
 		if (intarr[j] < target_value)
 			rank++;
 		if (j != i && intarr[j] == target_value)
-			error_exit("equivalent value");
+			error_exit("equivalent value\n");
 		j++;
 	}
 	return (rank);
+}
+
+
+void	check_already_sorted(t_stack *head)
+{
+	int	flag;
+
+	flag = 1;
+	if (head == NULL)
+		error_exit("check_already_sorted");
+	while (head->next != NULL)
+	{
+		if (head->rank > head->next->rank)
+			flag = 0;
+		head = head->next;
+	}
+	if (flag != 0)
+		error_exit("sorted"); //size = 1 でもこのエラーになる
 }
 
 // int main()

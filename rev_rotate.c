@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:27:48 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/05 15:59:21 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/06 13:13:42 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,55 @@ void	rra(t_stack **head, int size)
 	t_stack	*top;
 	t_stack	*prelast_node;
 	t_stack	*last_node;
-	int		i;
 
 	if (size < 2 || head == NULL)
 		error_exit("rra");
 	top = *head;
-	i = 0;
+	while ((*head)->next->next != NULL)
+		*head = (*head)->next;
+	prelast_node = *head;
 	while ((*head)->next != NULL)
-		head = (*head)->next;
-	prelast_node = head;
-	while ((*head) != NULL)
-		head = (*head)->next;
-	last_node = head;
+		*head = (*head)->next;
+	last_node = *head;
 	*head = top;
 
 	temp = last_node->next;
 	last_node->next = top;
 	prelast_node->next = temp;
 	*head = last_node;
+	ft_putstr_fd("rra\n", 1);
+}
+
+void	rrb(t_stack **head, int size)
+{
+	t_stack	*temp;
+	t_stack	*top;
+	t_stack	*prelast_node;
+	t_stack	*last_node;
+
+	if (size < 2 || head == NULL)
+		error_exit("rra");
+	top = *head;
+	while ((*head)->next->next != NULL)
+		*head = (*head)->next;
+	prelast_node = *head;
+	while ((*head)->next != NULL)
+		*head = (*head)->next;
+	last_node = *head;
+	*head = top;
+
+	temp = last_node->next;
+	last_node->next = top;
+	prelast_node->next = temp;
+	*head = last_node;
+	ft_putstr_fd("rrb\n", 1);
+}
+
+void	rrr(t_stack **a, t_stack **b, int size_a, int size_b)
+{
+	rra(a, size_a);
+	rrb(b, size_b);
+	ft_putstr_fd("rrr\n", 1);
 }
 
 // void	rrb(int *stack_b, int size)
@@ -53,10 +84,4 @@ void	rra(t_stack **head, int size)
 // 		i--;
 // 	}
 // 	stack_b[0] = temp;
-// }
-
-// void	rrr(int *stack_a, int *stack_b, int size_a, int size_b)
-// {
-// 	rra(stack_a, size_a);
-// 	rrb(stack_b, size_b);
 // }

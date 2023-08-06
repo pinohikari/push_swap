@@ -6,14 +6,14 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:46:39 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/04 17:26:32 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/06 16:30:59 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void		str_isdigit(char *str, int argc);
-int			*get_num(char *str);
+int			*get_num(char *str, t_info *info);
 static int	atoi_helper(char *str, int i, int flag);
 int			ft_atoi(char *str);
 
@@ -35,7 +35,7 @@ void	str_isdigit(char *str, int argc)
 	}
 }
 
-int	*get_num(char *str)
+int	*get_num(char *str, t_info *info)
 {
 	int		i;
 	size_t	len;
@@ -53,7 +53,7 @@ int	*get_num(char *str)
 		intarr[i] = ft_atoi(arr[i]);
 		i++;
 	}
-	intarr[i] = '\0';
+	info->size = i;
 	ft_free_tab(arr);
 	return (intarr);
 }

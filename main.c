@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:14:13 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/05 15:22:09 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/06 17:44:49 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 int	main(int argc, char **argv)
 {
 	int		i;
+	int		j;
 	int		*intarr;
 	t_info	info;
 	t_stack	*top;
 
 	info.a = NULL;
+	info.b = NULL;
 	info.size = 0;
 	if (argc >= 2)
 	{
@@ -30,30 +32,33 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		if (argc == 2)
-			intarr = get_num(argv[1]);
+		{
+			intarr = get_num(argv[1], &info);
+			i = info.size;
+		}
 		if (argc > 2)
 		{
 			i = 0;
 			intarr = malloc(sizeof(int) * (argc - 1));
 			if (intarr == NULL)
 				error_exit("malloc");
-			while (argv[i + 1] != '\0')
+			while (argv[i + 1] != NULL)
 			{
 				intarr[i] = ft_atoi(argv[i + 1]);
 				i++;
 			}
-			intarr[i] = '\0';
+			info.size = i;
 		}
-		i = 0;
-		while (intarr[i] != '\0')
+		j = 0;
+		while (i > 0)
 		{
-			push_back(&(info.a), intarr[i]);
-			i++;
+			push_back(&(info.a), intarr[j]);
+			j++;
+			i--;
 		}
-		info.size = i;
 		top = info.a;
 		i = 0;
-		while (info.a != NULL)
+		while (i < info.size)
 		{
 			info.a->rank = search_rank(intarr, info.size, i);
 			info.a = info.a->next;
@@ -61,16 +66,18 @@ int	main(int argc, char **argv)
 		}
 		free (intarr);
 		info.a = top;
-		if (info.size <= 6)
-			sort_under_six(&info, info.size);
-		// if (info.size > 6 && info.size <= 200)
-		// 	sort_under200(info, top, info.size);
+		check_already_sorted(info.a);
+		info.a = top;
+		if (info.size <= 5)
+			sort_under_five(&info, info.size);
+		if (info.size > 5 && info.size <= 200)
+			sort_under200(&info, &info.a, &info.b, info.size);
 		// if (info.size > 200)
-		// 	sort_over200(info, top, info.size);
+		// 	sort_over200(&info, info.size);
 		i = 0;
 		while (i < info.size)
 		{
-			printf ("data:%d\trank:%d\ti:%d\n", info.a->data, info.a->rank, i);
+			printf ("data:%d\trank:%d\tsize:%d\n", info.a->data, info.a->rank, info.size);
 			info.a = info.a->next;
 			i++;
 		}
