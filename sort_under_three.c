@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:19:20 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/06 13:56:07 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/09 18:04:14 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	sort_three(t_stack **top, int size)
 	first = (*top)->data;
 	second = (*top)->next->data;
 	third = (*top)->next->next->data;
-	// if (first < second && second < third)
-	// 	error_exit("sorted");
 	if (first <third &&third < second) /*1, 3, 2*/
 	{
 		rra(top, size);

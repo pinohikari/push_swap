@@ -11,7 +11,8 @@ SRCS := main.c\
 		sort_under_three.c\
 		rotate.c\
 		rev_rotate.c\
-		push.c
+		push.c\
+		sort_under200.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,8 +25,8 @@ LIBFT = libft/libft.a
 all: 	$(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	@ $(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(LIBS)
-	@echo "conpiled!"
+		@ $(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(LIBS)
+		@echo "conpiled!"
 
 $(LIBFT):
 	$(MAKE) -C libft/

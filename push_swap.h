@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:40:23 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/06 17:40:44 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/09 16:42:39 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void			sort_three(t_stack **top, int size);
 void			sort_four(t_stack **a, t_stack **b, int size);
 void			sort_five(t_stack **a, t_stack **b, int size);
 
-void			sort_under200(t_info *info, t_stack **a, t_stack **b, int size);
+void			sort_under200(t_stack **a, t_stack **b, int size);
 
 #endif
