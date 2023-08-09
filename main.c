@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:14:13 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/09 17:52:31 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/09 20:28:45 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int	main(int argc, char **argv)
 			sort_under_five(&info, info.size);
 		if (info.size > 5 && info.size <= 200)
 			sort_under200(&info.a, &info.b, info.size);
-		// if (info.size > 200)
-		// 	sort_over200(&info, info.size);
-		i = 0;
+		if (info.size > 200)
+			sort_over200(&info.a, &info.b, info.size);
+		// i = 0;
 		// while (i < info.size)
 		// {
 		// 	printf ("data:%d\trank:%d\tsize:%d\n", info.a->data, info.a->rank, info.size);
