@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 16:41:56 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/09 19:59:27 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/10 20:54:41 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sort_under200(t_stack **a, t_stack **b, int size)
 {
 	int	pb_count;
 	int	i;
+	int	j;
 	int	pivot;
 
 	pivot = size / 5;
@@ -45,6 +46,24 @@ void	sort_under200(t_stack **a, t_stack **b, int size)
 			pa(a, b, size - pb_count, pb_count);
 			i++;
 			pb_count--;
+		}
+		else if ((*b)->next->rank == size - i)
+			sb(b, pb_count);
+		else if (ft_stacklast(*b)->rank == size - i)
+			rrb(b, pb_count);
+		else if (ft_stackprelast(*b)->rank == size - i)
+		{
+			rrb(b, pb_count);
+			rrb(b, pb_count);
+		}
+		else if (search_stack_rank(*b, size - i) > (pb_count / 2))
+		{
+			j = 0;
+			while (j < pb_count - search_stack_rank(*b, size - i))
+			{
+				rrb(b, pb_count);
+				j++;
+			}
 		}
 		else
 			rb(b, pb_count);
@@ -80,20 +99,8 @@ void	sort_under200(t_stack **a, t_stack **b, int size)
 // 	return ;
 // }
 
-	// while (size - pb_count > 3)
-	// {
-	// 	pb(a, b, size - pb_count, pb_count);
-	// 	pb_count++;
-	// }
-
-
-	//sizeを5分割し、4つpivotを設ける
-	//１/４以下をpb、それ以外はra
-	//pbの後その上下を判断し、上半分の値だったら下へ
-	//2/4以下をpb、それ以外はra
-	//
-	//
-	//
-	//
-	//
-	//
+// while (size - pb_count > 3)
+// {
+// 	pb(a, b, size - pb_count, pb_count);
+// 	pb_count++;
+// }

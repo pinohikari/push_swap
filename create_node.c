@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:15 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/06 14:42:01 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/10 17:43:11 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,29 @@
 // 	head->next = head;
 // 	return (head);
 // }
+
+void	push_back_and_search_rank(t_info *info, int *intarr)
+{
+	int	i;
+	int	j;
+
+	i = info->size;
+	j = 0;
+	while (i > 0)
+	{
+		push_back(&(info->a), intarr[j]);
+		j++;
+		i--;
+	}
+	info->top = info->a;
+	i = 0;
+	while (i < info->size)
+	{
+		info->a->rank = search_rank(intarr, info->size, i);
+		info->a = info->a->next;
+		i++;
+	}
+}
 
 t_stack	*create_node(int data)
 {

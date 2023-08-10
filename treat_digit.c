@@ -6,16 +6,35 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 17:46:39 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/06 16:30:59 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/10 17:33:49 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int			*make_intarr(t_info *info, int argc, char **argv);
 void		str_isdigit(char *str, int argc);
 int			*get_num(char *str, t_info *info);
 static int	atoi_helper(char *str, int i, int flag);
 int			ft_atoi(char *str);
+
+int	*make_intarr(t_info *info, int argc, char **argv)
+{
+	int	i;
+	int	*intarr;
+
+	i = 0;
+	intarr = malloc(sizeof(int) * (argc - 1));
+	if (intarr == NULL)
+		error_exit("malloc");
+	while (argv[i + 1] != NULL)
+	{
+		intarr[i] = ft_atoi(argv[i + 1]);
+		i++;
+	}
+	info->size = i;
+	return (intarr);
+}
 
 void	str_isdigit(char *str, int argc)
 {

@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 20:06:38 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/09 20:20:51 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/10 20:43:18 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sort_over200(t_stack **a, t_stack **b, int size)
 {
 	int	pb_count;
 	int	i;
+	int	j;
 	int	pivot;
 
 	pivot = size / 10;
@@ -45,6 +46,24 @@ void	sort_over200(t_stack **a, t_stack **b, int size)
 			pa(a, b, size - pb_count, pb_count);
 			i++;
 			pb_count--;
+		}
+		else if ((*b)->next->rank == size - i)
+			sb(b, pb_count);
+		else if (ft_stacklast(*b)->rank == size - i)
+			rrb(b, pb_count);
+		else if (ft_stackprelast(*b)->rank == size - i)
+		{
+			rrb(b, pb_count);
+			rrb(b, pb_count);
+		}
+		else if (search_stack_rank(*b, size - i) > (pb_count / 2))
+		{
+			j = 0;
+			while (j < pb_count - search_stack_rank(*b, size - i))
+			{
+				rrb(b, pb_count);
+				j++;
+			}
 		}
 		else
 			rb(b, pb_count);
