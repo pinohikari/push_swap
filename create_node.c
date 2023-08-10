@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:15 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/10 17:43:11 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/10 21:11:50 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_stack	*create_node(int data)
 		error_exit("malloc");
 	node->data = data;
 	node->next = NULL;
-	// node->prev = NULL; //双方向
 	return (node);
 }
 
@@ -77,7 +76,6 @@ void	push_back(t_stack **head, int data)
 	while (current->next != NULL)
 		current = current->next;
 	current->next = new_node;
-	// new_node->prev = current; //双方向
 }
 
 void	free_list(t_stack *head)

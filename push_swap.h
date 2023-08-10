@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 19:40:23 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/10 20:20:50 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/10 21:06:52 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ void		rrr(t_stack **a, t_stack **b, int size_a, int size_b);
 //push
 void		pa(t_stack **a, t_stack **b, int size_a, int size_b);
 void		pb(t_stack **a, t_stack **b, int size_a, int size_b);
+int			push_to_b(t_stack **a, t_stack **b, int size, int pivot);
+int			push_to_b_over200(t_stack **a, t_stack **b, int size, int pivot);
+void		push_to_a(t_stack **a, t_stack **b, int size, int pb_count);
 
 void		sort_under_five(t_info *info, int size);
 void		sort_two(t_stack **top, int size);

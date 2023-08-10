@@ -6,12 +6,11 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 17:51:17 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/06 17:25:11 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/10 21:12:54 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	search_rank(int *intarr, int size, int i)
 {
@@ -32,7 +31,6 @@ int	search_rank(int *intarr, int size, int i)
 	}
 	return (rank);
 }
-
 
 void	check_already_sorted(t_stack *head)
 {
