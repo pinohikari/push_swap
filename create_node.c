@@ -6,23 +6,11 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 17:27:15 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/10 21:11:50 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/11 08:51:11 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// t_stack	*create_list(void)
-// {
-// 	t_stack	*head;
-
-// 	head = malloc(sizeof(t_stack));
-// 	if (!head)
-// 		error_exit("malloc");
-// 	head->value = 0;
-// 	head->next = head;
-// 	return (head);
-// }
 
 void	push_back_and_search_rank(t_info *info, int *intarr)
 {

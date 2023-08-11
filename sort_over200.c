@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 20:06:38 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/10 21:06:41 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/11 08:48:09 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	sort_over200(t_stack **a, t_stack **b, int size)
 	push_to_a(a, b, size, pb_count);
 	return ;
 }
-
 
 // void	sort_over200(t_stack **a, t_stack **b, int size)
 // {

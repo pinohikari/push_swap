@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:26:07 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/10 21:10:56 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/11 08:52:28 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,20 +127,3 @@ void	pa(t_stack **a, t_stack **b, int size_a, int size_b)
 	*a = new_a_top;
 	ft_putstr_fd("pa\n", 1);
 }
-
-// void	pb(int *stack_a, int *stack_b, int *size_a, int *size_b)
-// {
-// 	int	i;
-
-// 	if (*size_a == 0)
-// 		return ;
-// 	stack_b[*size_b] = stack_a[0];
-// 	(*size_b)++;
-// 	(*size_a)--;
-// 	i = 0;
-// 	while (i < *size_a)
-// 	{
-// 		stack_a[i] = stack_a[i + 1];
-// 		i++;
-// 	}
-// }

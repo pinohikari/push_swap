@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 18:19:20 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/09 18:04:14 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/11 08:55:15 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@ void	sort_three(t_stack **top, int size)
 		sa(top, size);
 	}
 }
-
-
-
-
 
 // int	*sort_three(int *stack_a)
 // {

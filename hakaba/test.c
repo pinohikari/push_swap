@@ -6,11 +6,344 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 17:01:09 by hhino             #+#    #+#             */
-/*   Updated: 2023/07/24 19:36:03 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/11 08:56:21 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+// void	sa(t_stack **head, int size)
+// {
+// 	t_stack	*top;
+// 	t_stack	*next_node;
+// 	t_stack	*temp;
+// 	// t_stack	*temp2;
+
+// 	if (size < 2 || *head == NULL || (*head)->next == NULL)
+// 		error_exit("sa");
+// 	top = *head;
+// 	next_node = (*head)->next;
+// 	// // temp = top;
+// 	// // top = next_node;
+// 	// // next_node = temp;
+
+// 	temp = top;
+// 	top = next_node;
+// 	next_node = temp;
+// 	top->next = (*head)->next->next;
+// 	*head = next_node;
+
+// 	// temp = *head;
+// 	// temp2 = (*head)->next->next;
+// 	// *head = (*head)->next;
+// 	// temp->next = temp2;
+// 	// (*head)->next = temp;
+
+// 	// temp->next =(*head)->next ;
+// 	// temp = temp2;
+// 	// temp2 = temp;
+// 	// temp->next = (*head)->next->next;
+// 	//  temp2 = (*head)->next->next;
+// 	// (*head)->next->next = temp2;
+
+// 	ft_putstr_fd("sa\n", 1);
+// }
+
+// void	sa(t_stack **head, int size)
+// {
+// 	t_stack	*top;
+// 	t_stack	*next_node;
+
+// 	if (size < 2 || *head == NULL || (*head)->next == NULL)
+// 		error_exit("sa");
+// 	top = *head;
+// 	next_node = top->next;
+// 	top->next = next_node->next;
+// 	next_node->next = top;
+// 	*head = next_node;
+// 	ft_putstr_fd("sa\n", 1);
+// }
+
+// void	sb(t_stack **head, int size)
+// {
+// 	t_stack	*top;
+// 	t_stack	*next_node;
+
+// 	if (size < 2 || *head == NULL || (*head)->next == NULL)
+// 		error_exit("sb");
+// 	top = *head;
+// 	next_node = top->next;
+// 	top->next = next_node->next;
+// 	next_node->next = top;
+// 	*head = next_node;
+// 	ft_putstr_fd("sb\n", 1);
+// }
+
+//配列ver.
+// void	sa(int *stack_a, int size)
+// {
+// 	int	temp;
+
+// 	if (size < 2)
+// 		return ;
+// 	temp = stack_a[0];
+// 	stack_a[0] = stack_a[1];
+// 	stack_a[1] = temp;
+// 	ft_putstr_fd("sa", 1);
+// }
+
+// void	sb(int *stack_b, int size)
+// {
+// 	int	temp;
+
+// 	temp = stack_b[0];
+// 	stack_b[0] = stack_b[1];
+// 	stack_b[1] = temp;
+// 	ft_putstr_fd("sb", 1);
+// }
+
+// void	ss(int *stack_a, int *stack_b, int size_a, int size_b)
+// {
+// 	sa(stack_a, size_a);
+// 	sb(stack_b, size_b);
+// 	ft_putstr_fd("ss", 1);
+// }
+
+
+// void	rb(int **head, int size)
+// {
+// 	int	temp;
+// 	int	i;
+
+// 	if (size < 2)
+// 		return ;
+// 	temp = stack_b[0];
+// 	i = 0;
+// 	while (i < size - 1)
+// 	{
+// 		stack_b[i] = stack_b[i + 1];
+// 		i++;
+// 	}
+// 	stack_b[size - 1] = temp;
+// }
+
+// void	rr(int *stack_a, int *stack_b, int size_a, int size_b)
+// {
+// 	ra(stack_a, size_a);
+// 	rb(stack_b, size_b);
+// }
+
+// int main()
+// {
+// 	int intarr[] = {5, 3, 9, 7, 2, 2};
+// 	int size = sizeof(intarr) / sizeof(intarr[0]);
+
+// 	for (int i = 0; i < size; i++)
+// 	{
+// 		int rank = search_rank(intarr, size, i);
+// 		printf("intarr[%d] = %d, rank = %d\n", i, intarr[i], rank);
+// 	}
+// 	return 0;
+// }
+
+// void	rrb(int *stack_b, int size)
+// {
+// 	int	temp;
+// 	int	i;
+
+// 	if (size < 2)
+// 		return ;
+// 	temp = stack_b[size - 1];
+// 	i = size - 1;
+// 	while (i > 0)
+// 	{
+// 		stack_b[i] = stack_b[i - 1];
+// 		i--;
+// 	}
+// 	stack_b[0] = temp;
+// }
+
+// void	coordinate_compression(t_info *info)
+// {
+// 	t_stack	**array;
+// 	t_stack	*current;
+// 	t_stack	*temp;
+// 	int		compressed_value;
+// 	int		rank;
+// 	int		i;
+// 	int		j;
+
+// 	array = (t_stack **)malloc((n + 1) * sizeof(t_stack *));
+// 	if (!array)
+// 		error_exit("malloc");
+// 	current = list;
+// 	i = 0;
+// 	while (i < n) // iじゃなくてlistになるまで
+// 	{
+// 		array[i] = current;
+// 		// prinf("%d", current->data);
+// 		current = current->next;
+// 		i++;
+// 	}
+// 	i = 0;
+// 	j = 0;
+// 	while (i < n - 1)
+// 	{
+// 		while (j < n - i - 1)
+// 		{
+// 			if (array[j]->data > array[j + 1]->data)
+// 			{
+// 				temp = array[j];
+// 				array[j] = array[j + 1];
+// 				array[j + 1] = temp;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	compressed_value = array[0]->data;
+// 	rank = 0;
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		if (array[i]->data != compressed_value)
+// 		{
+// 			compressed_value = array[i]->data;
+// 			rank++;
+// 		}
+// 		array[i]->rank = rank;
+// 		i++;
+// 		rank++;
+// 	}
+// 	free(array);
+// }
+
+//
+	//////////////////////////////////////////////////////////////////////////////////
+
+// void	sort_ascending_order(t_stack **list, int n)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		j = 0;
+// 		while (j < n - i - 1)
+// 		{
+// 			if (list->data > list->next->data)
+// 				ft_swap(&list, &list);
+// 			if (list->data == list->next->data)
+// 				error_exit("equivalent value");
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// void	coordinate_compression(t_stack **list, int n)
+// {
+// 	int	**arr;
+// 	int	arr_rank;
+// 	int	i;
+
+// 	arr = malloc(sizeof(t_stack) * (n + 1));
+// 	if (!arr)
+// 		error_exit("malloc");
+// 	sort_ascending_order(list, n);
+// 	arr_rank = 0;
+// 	while (arr_rank < n - 1)
+// 	{
+// 		list->rank = arr_rank;
+// 		arr_rank++;
+// 	}
+// 	free(arr);
+// }
+
+// int	*coordinate_compression(int arr[], int n)
+// {
+// 	int	*ans;
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < n)
+// 	{
+// 		j = 0;
+// 		while (j < n - i - 1)
+// 		{
+// 			if (arr[j] > arr[j + 1])
+// 				ft_swap(&arr[j], &arr[j + 1]);
+// 			if (arr[j] == arr[j + 1])
+// 				error_exit("equivalent value");
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	ans = (int *)malloc(n * sizeof(int));
+// 	i = 0;
+// 	j = 0;
+// 	while (i < n)
+// 		ans[j++] = arr[i++];
+// 	return (ans);
+// }
+
+// int	main(void)
+// {
+// 	int	n;
+// 	int	*array;
+// 	int	*compressedArray;
+
+// 	printf("配列の要素数を入力してください: ");
+// 	scanf("%d", &n);
+// 	array = (int *)malloc(n * sizeof(int));
+// 	printf("整数を入力してください:\n");
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		scanf("%d", &array[i]);
+// 	}
+// 	compressedArray = coordinate_compression(array, n);
+// 	printf("座標圧縮後の配列: ");
+// 	for (int i = 0; i < n; i++)
+// 	{
+// 		printf("%d ", compressedArray[i]);
+// 	}
+// 	printf("\n");
+// 	free(array);
+// 	free(compressedArray);
+// 	return (0);
+// }
+
+
+// t_stack	*create_list(void)
+// {
+// 	t_stack	*head;
+
+// 	head = malloc(sizeof(t_stack));
+// 	if (!head)
+// 		error_exit("malloc");
+// 	head->value = 0;
+// 	head->next = head;
+// 	return (head);
+// }
+
+
+// void	pb(int *stack_a, int *stack_b, int *size_a, int *size_b)
+// {
+// 	int	i;
+
+// 	if (*size_a == 0)
+// 		return ;
+// 	stack_b[*size_b] = stack_a[0];
+// 	(*size_b)++;
+// 	(*size_a)--;
+// 	i = 0;
+// 	while (i < *size_a)
+// 	{
+// 		stack_a[i] = stack_a[i + 1];
+// 		i++;
+// 	}
+// }
 
 void	ft_swap(int *a, int *b)
 {

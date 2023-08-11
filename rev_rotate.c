@@ -6,7 +6,7 @@
 /*   By: hhino <hhino@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:27:48 by hhino             #+#    #+#             */
-/*   Updated: 2023/08/06 13:13:42 by hhino            ###   ########.fr       */
+/*   Updated: 2023/08/11 08:54:19 by hhino            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	rra(t_stack **head, int size)
 		*head = (*head)->next;
 	last_node = *head;
 	*head = top;
-
 	temp = last_node->next;
 	last_node->next = top;
 	prelast_node->next = temp;
@@ -54,7 +53,6 @@ void	rrb(t_stack **head, int size)
 		*head = (*head)->next;
 	last_node = *head;
 	*head = top;
-
 	temp = last_node->next;
 	last_node->next = top;
 	prelast_node->next = temp;
@@ -68,20 +66,3 @@ void	rrr(t_stack **a, t_stack **b, int size_a, int size_b)
 	rrb(b, size_b);
 	ft_putstr_fd("rrr\n", 1);
 }
-
-// void	rrb(int *stack_b, int size)
-// {
-// 	int	temp;
-// 	int	i;
-
-// 	if (size < 2)
-// 		return ;
-// 	temp = stack_b[size - 1];
-// 	i = size - 1;
-// 	while (i > 0)
-// 	{
-// 		stack_b[i] = stack_b[i - 1];
-// 		i--;
-// 	}
-// 	stack_b[0] = temp;
-// }
